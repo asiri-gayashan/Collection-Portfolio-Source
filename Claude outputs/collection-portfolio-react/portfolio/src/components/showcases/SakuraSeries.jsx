@@ -12,13 +12,13 @@ export default function SakuraSeries({ c }) {
     <>
       <div style={{ position: 'relative', paddingTop: 20 }}>
         <div
-          className="anton"
+          className="anton sk-big"
           style={{
             position: 'absolute', left: -120, right: -120, top: 120, fontSize: 340, lineHeight: 0.8,
             color: '#FFF200', textAlign: 'center', whiteSpace: 'nowrap', opacity: 0.95,
           }}
         >
-          SPEC<br />SPOTLIGHT
+          <div className="sk-big1">SPEC</div><div className="sk-big2">SPOTLIGHT</div>
         </div>
         <div className="row" style={{ justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 34, position: 'relative' }}>
           <span className="mono" style={{ color: '#FFF200' }}>Series A</span>
@@ -26,11 +26,12 @@ export default function SakuraSeries({ c }) {
             Bike-culture explainers: a black-and-white cut-out over giant yellow type, grain and a short Sinhala explainer.
           </span>
         </div>
-        <div className="row" style={{ gap: 20, position: 'relative', padding: '60px 0 0' }}>
+        <div className="row sk-row vskew" style={{ gap: 20, position: 'relative', padding: '60px 0 0' }}>
           {A.map(([k, name], i) => (
-            <div key={k} className="col" style={{ flex: 1, gap: 12, transform: `translateY(${DROP[i]}px) rotate(${ROT[i]}deg)` }}>
+            <div key={k} className="col sk-item" style={{ flex: 1, gap: 12, transform: `translateY(${DROP[i]}px) rotate(${ROT[i]}deg)` }}>
               <img
-                className="post"
+                className="post sk-img"
+                data-cursor="VIEW"
                 src={img(k)}
                 alt=""
                 style={{ width: '100%', aspectRatio: '1', boxShadow: '0 40px 80px rgba(0,0,0,.7)', border: '6px solid #0B0B0B' }}
@@ -44,6 +45,7 @@ export default function SakuraSeries({ c }) {
       </div>
 
       <div
+        className="sk-paper"
         style={{
           marginTop: 200, background: '#EDE6D6', color: '#151515', padding: '50px 54px 60px',
           boxShadow: '0 50px 100px rgba(0,0,0,.6)', transform: 'rotate(-1.2deg)',
@@ -54,7 +56,7 @@ export default function SakuraSeries({ c }) {
           <span className="mono" style={{ fontSize: 11 }}>Series B</span>
           <span className="mono" style={{ fontSize: 11 }}>Sri Lanka · 2026</span>
         </div>
-        <div style={{ ...SERIF, fontSize: 170, lineHeight: 0.95, textAlign: 'center', letterSpacing: '-.02em', padding: '14px 0 6px' }}>
+        <div className="sk-mast" style={{ ...SERIF, fontSize: 170, lineHeight: 0.95, textAlign: 'center', letterSpacing: '-.02em', padding: '14px 0 6px' }}>
           Torque Times
         </div>
         <div className="row" style={{ borderTop: '4px double #151515', borderBottom: '1px solid #151515', padding: '8px 0', marginBottom: 34 }}>
@@ -71,7 +73,7 @@ export default function SakuraSeries({ c }) {
           </div>
           <div className="col" style={{ flex: 1, gap: 22 }}>
             {B.slice(1).map(([k, t]) => (
-              <div key={k} className="row" style={{ gap: 18, borderTop: '1px solid #151515', paddingTop: 18 }}>
+              <div key={k} className="row sk-story" style={{ gap: 18, borderTop: '1px solid #151515', paddingTop: 18 }}>
                 <img src={img(k)} alt="" style={{ width: 200, height: 200, objectFit: 'cover', flex: 'none' }} />
                 <div style={{ ...SERIF, fontSize: 29, lineHeight: 1.08 }}>{t}</div>
               </div>

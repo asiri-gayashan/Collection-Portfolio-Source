@@ -5,11 +5,11 @@ const ROT = [10, -8, 12, -6];
 // Chapter 02 — posts with hanging price tags.
 export default function KiawayTags({ c }) {
   return (
-    <div className="row" style={{ gap: 24 }}>
+    <div className="row sc-kiaway vskew" style={{ gap: 24 }}>
       {c.posts.map(([k, name, price], i) => (
-        <div key={k} style={{ position: 'relative', flex: 1 }}>
-          <img className="post" src={img(k)} alt="" style={{ width: '100%', aspectRatio: '1' }} />
-          <div style={{ position: 'absolute', right: -14, top: -30, transform: `rotate(${ROT[i]}deg)`, transformOrigin: 'top center' }}>
+         <div key={k} className="ki-item" style={{ position: 'relative', flex: 1 }}>
+          <img className="post ki-img" data-cursor="VIEW" src={img(k)} alt="" style={{ width: '100%', aspectRatio: '1' }} />
+          <div className="ki-tag" data-rot={ROT[i]} style={{ position: 'absolute', right: -14, top: -30, transform: `rotate(${ROT[i]}deg)`, transformOrigin: 'top center' }}>
             <div style={{ width: 2, height: 40, background: '#fff', margin: '0 auto' }} />
             <div
               style={{

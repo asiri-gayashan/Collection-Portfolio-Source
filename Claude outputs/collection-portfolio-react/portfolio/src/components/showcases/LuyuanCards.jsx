@@ -6,11 +6,12 @@ const DROP = [0, 24, 6, 30];
 // Chapter 01 — four audience cards, slightly scattered.
 export default function LuyuanCards({ c }) {
   return (
-    <div className="row" style={{ gap: 22, justifyContent: 'center' }}>
+    <div className="row sc-luyuan" style={{ gap: 22, justifyContent: 'center', perspective: 1400 }}>
       {c.posts.map(([k, audience, model, price], i) => (
         <div
           key={k}
-          className="col"
+          className="col lu-card"
+          data-cursor="VIEW"
           style={{
             width: 275, background: '#fff', borderRadius: 14, padding: 12,
             boxShadow: '0 30px 60px rgba(13,59,30,.22)', transform: `rotate(${ROT[i]}deg) translateY(${DROP[i]}px)`,

@@ -1,8 +1,11 @@
 :root{--ink:#0D0D0E;--paper:#EFECE6;--sig:#FF4D1A}
 *{box-sizing:border-box;margin:0;padding:0}
-body{width:1400px;background:var(--ink);color:#fff;font-family:Archivo,sans-serif;-webkit-font-smoothing:antialiased}
+html{background:var(--ink);overflow-x:clip}
+body{background:var(--ink);color:#fff;font-family:Archivo,sans-serif;-webkit-font-smoothing:antialiased}
 img{display:block}
-section{position:relative;overflow:hidden;padding:140px 120px}
+/* page is designed on a 1400px canvas; --fit (set in main.jsx) scales it to the window width */
+#root{width:1400px;zoom:var(--fit,1)}
+section{position:relative;overflow:clip;padding:140px 120px}
 .row{display:flex}.col{display:flex;flex-direction:column}
 .anton{font-family:Anton;font-weight:400;line-height:.88}
 .serif{font-family:'Instrument Serif';font-style:italic;font-weight:400;letter-spacing:-.01em}

@@ -19,9 +19,9 @@ const SHOWCASES = {
 function Opener({ c }) {
   const fan = { x: [300, 520, 740], y: [300, 240, 300], z: [1, 3, 2], rot: [-14, 0, 14], ry: [-24, 0, 24] };
   return (
-    <section id={`${c.id}o`} className="opener" style={{ background: c.obg, color: c.ofg }}>
+    <section id={`${c.id}o`} className="opener" data-label={`CH.${c.num} — ${c.gname}`} style={{ background: c.obg, color: c.ofg }}>
       <div
-        className="giant"
+        className="giant op-giant"
         style={{
           top: c.gtop || 120, fontSize: c.gsize,
           ...(c.gout ? { color: 'transparent', WebkitTextStroke: `3px ${c.ofg}` } : {}),
@@ -29,7 +29,7 @@ function Opener({ c }) {
       >
         {c.gname}
       </div>
-      <div className="row" style={{ position: 'absolute', left: 120, right: 120, top: 52, justifyContent: 'space-between', zIndex: 4 }}>
+      <div className="row op-top" style={{ position: 'absolute', left: 120, right: 120, top: 52, justifyContent: 'space-between', zIndex: 4 }}>
         <span className="mono">Chapter {c.num}</span>
         <span className="mono">{c.tag}</span>
         <span className="mono">{c.pc} posts</span>
@@ -37,7 +37,10 @@ function Opener({ c }) {
       {c.fan.map((k, i) => (
         <img
           key={k}
-          className="post"
+          className="post op-fan"
+          data-ry={fan.ry[i]}
+          data-rot={fan.rot[i]}
+          data-cursor="VIEW"
           src={img(k)}
           alt=""
           style={{
@@ -48,12 +51,12 @@ function Opener({ c }) {
         />
       ))}
       <div
-        className="anton"
+        className="anton op-num"
         style={{ position: 'absolute', left: 120, top: 735, fontSize: 150, lineHeight: 0.85, zIndex: 4, mixBlendMode: c.blend || 'normal' }}
       >
         {c.num}
       </div>
-      <div style={{ position: 'absolute', right: 120, top: 770, width: 360, fontSize: 17, lineHeight: 1.5, zIndex: 4, textAlign: 'right' }}>
+      <div className="op-text" style={{ position: 'absolute', right: 120, top: 770, width: 360, fontSize: 17, lineHeight: 1.5, zIndex: 4, textAlign: 'right' }}>
         {c.otext}
       </div>
       <Tape words={c.tw} top={880} background={c.tbg} color={c.tfg} rotate={-2.5} />
@@ -65,7 +68,7 @@ function Meta({ items, line }) {
   return (
     <div className="meta" style={{ borderColor: line }}>
       {items.map(([a, b]) => (
-        <div key={a}>
+        <div key={a} className="meta-i">
           <span className="mono lbl">{a}</span>
           <b>{b}</b>
         </div>
@@ -79,11 +82,14 @@ function Anatomy({ c }) {
   return (
     <div className="anat">
       <div className="pic">
-        <img className="post" src={img(a.img)} alt="" style={{ width: 600, height: 600 }} />
+        <div className="an-mask" style={{ width: 600, height: 600, overflow: 'clip' }}>
+          <img className="post an-img" src={img(a.img)} alt="" data-cursor="VIEW" style={{ width: 600, height: 600 }} />
+        </div>
         {a.mk.map(([x, y], i) => (
           <span
             key={i}
             className="mk"
+            data-i={i}
             style={{ left: `${x * 100}%`, top: `${y * 100}%`, background: c.mkbg, color: c.mkfg, borderColor: c.mkbd }}
           >
             {i + 1}
@@ -93,7 +99,7 @@ function Anatomy({ c }) {
       <div className="col" style={{ flex: 1 }}>
         <span className="mono" style={{ color: c.accent, paddingBottom: 12 }}>Anatomy of the template</span>
         {a.notes.map(([x, y], i) => (
-          <div key={x} className="note" style={{ borderColor: c.line }}>
+          <div key={x} className="note" data-i={i} style={{ borderColor: c.line }}>
             <span className="n" style={{ color: c.accent }}>{String(i + 1).padStart(2, '0')}</span>
             <span className="col" style={{ gap: 3 }}>
               <b>{x}</b>
@@ -124,7 +130,7 @@ export default function Chapter({ c }) {
   return (
     <>
       <Opener c={c} />
-      <section id={c.id} style={{ background: c.bg, color: c.fg }}>
+      <section id={c.id} className="chapter" data-label={`CH.${c.num} — ${c.gname} / WORK`} style={{ background: c.bg, color: c.fg }}>
         <Meta items={c.meta} line={c.line} />
         <div className="lede">
           <div className="big">
