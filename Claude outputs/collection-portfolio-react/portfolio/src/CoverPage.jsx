@@ -10,7 +10,7 @@ export default function Cover() {
     <>
       <div className="a" style={{ left: -180, top: 250, width: 1300, height: 700, perspective: 1000 }}>
         <div
-          style={{
+          style={{ 
             display: 'grid', gridTemplateColumns: 'repeat(8,150px)', gap: 14,
             transform: 'rotateX(58deg) rotateZ(-26deg) translate(-40px,-160px)',
           }}

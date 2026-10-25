@@ -6,6 +6,6 @@ import Cover from './CoverPage.jsx';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Cover />
+    <Cover /> 
   </React.StrictMode>
 );

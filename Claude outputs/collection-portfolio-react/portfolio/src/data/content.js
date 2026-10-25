@@ -7,8 +7,8 @@ export const designer = {
   name: 'Asiri Gayashan',
   title: 'Graphic Designer & Digital Marketer',
   basedIn: ['Sri Lanka', 'Working worldwide'],
-  email: 'your@email.com',
-  behance: 'behance.net/yourname',
+  email: 'gayashanasiri@outlook.com',
+  behance: 'behance.net/asirigayashan_',
 };
 
 // Order used for the 3D image floors (hero, wall, cover)

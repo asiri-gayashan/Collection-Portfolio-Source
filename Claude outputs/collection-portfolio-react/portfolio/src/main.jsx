@@ -9,7 +9,7 @@ import { fitToWindow, initSmoothScroll, ScrollTrigger, STATIC } from './fx/motio
 fitToWindow();
 window.addEventListener('resize', () => {
   fitToWindow();
-  ScrollTrigger.refresh();
+  ScrollTrigger.refresh(); 
 });
 if (STATIC) document.documentElement.classList.add('static');
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
