@@ -15,6 +15,54 @@ const SHOWCASES = {
   billboard: Billboard,
 };
 
+// Full-bleed chapter opener: giant brand name, fanned posts, tape strip.
+function Opener({ c }) {
+  const fan = { x: [300, 520, 740], y: [300, 240, 300], z: [1, 3, 2], rot: [-14, 0, 14], ry: [-24, 0, 24] };
+  return (
+    <section id={`${c.id}o`} className="opener" data-label={`CH.${c.num} — ${c.gname}`} style={{ background: c.obg, color: c.ofg }}>
+      <div
+        className="giant op-giant"
+        style={{
+          top: c.gtop || 120, fontSize: c.gsize,
+          ...(c.gout ? { color: 'transparent', WebkitTextStroke: `3px ${c.ofg}` } : {}),
+        }}
+      >
+        {c.gname}
+      </div>
+      <div className="row op-top" style={{ position: 'absolute', left: 120, right: 120, top: 52, justifyContent: 'space-between', zIndex: 4 }}>
+        <span className="mono">Chapter {c.num}</span>
+        <span className="mono">{c.tag}</span>
+        <span className="mono">{c.pc} posts</span>
+      </div>
+      {c.fan.map((k, i) => (
+        <img
+          key={k}
+          className="post op-fan"
+          data-ry={fan.ry[i]}
+          data-rot={fan.rot[i]}
+          data-cursor="VIEW"
+          src={img(k)}
+          alt=""
+          style={{
+            position: 'absolute', left: fan.x[i], top: fan.y[i], width: 360, height: 360,
+            transform: `perspective(1400px) rotateY(${fan.ry[i]}deg) rotate(${fan.rot[i]}deg)`,
+            zIndex: fan.z[i], boxShadow: '0 50px 90px rgba(0,0,0,.45)',
+          }}
+        />
+      ))}
+      <div
+        className="anton op-num"
+        style={{ position: 'absolute', left: 120, top: 735, fontSize: 150, lineHeight: 0.85, zIndex: 4, mixBlendMode: c.blend || 'normal' }}
+      >
+        {c.num}
+      </div>
+      <div className="op-text" style={{ position: 'absolute', right: 120, top: 770, width: 360, fontSize: 17, lineHeight: 1.5, zIndex: 4, textAlign: 'right' }}>
+        {c.otext}
+      </div>
+      <Tape words={c.tw} top={880} background={c.tbg} color={c.tfg} rotate={-2.5} />
+    </section>
+  );
+}
 
 function Meta({ items, line }) {
   return (
