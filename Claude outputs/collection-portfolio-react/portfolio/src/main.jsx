@@ -17,3 +17,4 @@ initSmoothScroll();
 
 // (No StrictMode: it double-mounts effects, which would build every
 // WebGL scene and scroll animation twice in development.)
+createRoot(document.getElementById('root')).render(<App />);
